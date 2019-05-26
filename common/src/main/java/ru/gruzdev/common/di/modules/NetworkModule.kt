@@ -15,7 +15,7 @@ import javax.inject.Singleton
 @Module
 class NetworkModule {
 
-    val BASE_URL = "https://ghibliapi.herokuapp.com/films/"
+    val BASE_URL = "https://ghibliapi.herokuapp.com/"
 
     @Provides
     @Singleton
@@ -32,7 +32,7 @@ class NetworkModule {
             .baseUrl(BASE_URL)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
 
     @Provides

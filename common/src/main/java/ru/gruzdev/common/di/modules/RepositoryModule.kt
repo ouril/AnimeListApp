@@ -10,6 +10,6 @@ import ru.gruzdev.common.network.repository.AnimeFilmsRepository
 class RepositoryModule {
 
     @Provides
-    fun proovideAnimeFilmRepository(apiService: AnimeApiService):AnimeFilmsRepository =
+    fun provideAnimeFilmRepository(apiService: AnimeApiService):AnimeFilmsRepository =
             AnimeFilmsRepository(apiService)
 }

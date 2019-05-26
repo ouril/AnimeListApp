@@ -2,7 +2,7 @@ package ru.gruzdev.common.base
 
 import io.reactivex.disposables.Disposable
 import io.reactivex.disposables.CompositeDisposable
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 
 
 open class BaseViewModel : ViewModel() {

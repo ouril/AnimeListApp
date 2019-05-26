@@ -1,23 +1,23 @@
 package ru.gruzdev.common.base
 
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 
 abstract class BaseActivity: AppCompatActivity() {
 
-    fun pushFragment(fragment: Fragment){
+    fun pushFragment(fragment: androidx.fragment.app.Fragment){
         if(!supportFragmentManager.popBackStackImmediate(fragment.javaClass.simpleName, 0)){
             supportFragmentManager.beginTransaction()
                 .addToBackStack(fragment.javaClass.simpleName)
-                .replace(containerResId(), fragment)
+                .replace(containerResId(), fragment).commit()
         }
     }
 
-    protected fun containerResId(): Int {
+    open fun containerResId(): Int {
         return 0
     }
 
-    fun removeFragment(fragment: Fragment) {
+    fun removeFragment(fragment: androidx.fragment.app.Fragment) {
         supportFragmentManager.beginTransaction().remove(fragment).commitAllowingStateLoss()
     }
 
@@ -26,7 +26,7 @@ abstract class BaseActivity: AppCompatActivity() {
         for (i in fragments.indices) {
             val fragment = fragments[i]
             if (fragment.javaClass.simpleName != fragmentName) {
-                removeFragment(fragment as Fragment)
+                removeFragment(fragment as androidx.fragment.app.Fragment)
                 break
             }
         }

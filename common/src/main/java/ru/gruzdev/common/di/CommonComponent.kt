@@ -1,4 +1,7 @@
 package ru.gruzdev.common.di
 
-open interface CommonComponent {
+import ru.gruzdev.common.network.repository.AnimeFilmsRepository
+
+interface CommonComponent {
+    fun animeFilmsRepository(): AnimeFilmsRepository
 }

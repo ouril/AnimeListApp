@@ -7,7 +7,7 @@ import ru.gruzdev.common.di.CommonApplication
 import ru.gruzdev.common.di.CommonComponent
 
 class App: Application(), CommonApplication {
-    override fun componrnt(): CommonComponent = applicationComponent
+    override fun component(): CommonComponent = applicationComponent
 
     override fun onCreate() {
         super.onCreate()

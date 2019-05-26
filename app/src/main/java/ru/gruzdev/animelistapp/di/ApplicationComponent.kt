@@ -11,9 +11,9 @@ import  ru.gruzdev.common.di.modules.*
 
 @Singleton
 @Component(modules = [ApplicationModule::class, NetworkModule::class, RepositoryModule::class])
-public interface ApplicationComponent: CommonComponent {
+interface ApplicationComponent: CommonComponent {
     @Component.Builder
-    public interface  Builder {
+    interface  Builder {
         @BindsInstance
         fun application(application: Application): Builder
 
