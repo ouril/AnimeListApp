@@ -9,13 +9,11 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.gruzdev.common.network.api.AnimeApiService
+import ru.gruzdev.common.network.api.Url
 import javax.inject.Singleton
-
 
 @Module
 class NetworkModule {
-
-    val BASE_URL = "https://ghibliapi.herokuapp.com/"
 
     @Provides
     @Singleton
@@ -29,7 +27,7 @@ class NetworkModule {
     @Singleton
     fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(Url.BASE_URL)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
@@ -38,5 +36,5 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideAnimeFilmApiService(retrofit: Retrofit): AnimeApiService =
-            retrofit.create(AnimeApiService::class.java)
+        retrofit.create(AnimeApiService::class.java)
 }

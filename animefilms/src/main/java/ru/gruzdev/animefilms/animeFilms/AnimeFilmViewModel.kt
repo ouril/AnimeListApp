@@ -24,7 +24,6 @@ class AnimeFilmViewModel(val repository: AnimeFilmsRepository) : BaseViewModel()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { films ->
-                    println("-------------------------> ${films[0].id}")
                     data.postValue(films)
                 })
     }

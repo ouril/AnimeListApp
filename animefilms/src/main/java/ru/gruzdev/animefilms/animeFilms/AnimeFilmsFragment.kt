@@ -47,8 +47,8 @@ class AnimeFilmsFragment : androidx.fragment.app.Fragment() {
             }
         })
         viewModel.fetchData()
-
     }
+
     fun inject() {
         val application = activity!!.application as CommonApplication
         animeFilmsComponent = DaggerAnimeFilmComponent

@@ -36,7 +36,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation project(':common')
     implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'android.arch.paging:runtime:1.0.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.16'
     kapt 'com.google.dagger:dagger-compiler:2.16'
     api 'androidx.paging:paging-runtime:2.1.0'

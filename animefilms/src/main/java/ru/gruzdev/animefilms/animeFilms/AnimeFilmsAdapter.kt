@@ -17,6 +17,6 @@ class AnimeFilmsAdapter(val items: List<AnimeFilm>): androidx.recyclerview.widge
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.binding.name = items[position]
+        holder.binding.film = items[position]
     }
 }
