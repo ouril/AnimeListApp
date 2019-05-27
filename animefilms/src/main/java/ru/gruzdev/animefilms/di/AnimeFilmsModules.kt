@@ -8,7 +8,7 @@ import ru.gruzdev.animefilms.animeFilms.AnimeFilmViewModel
 import ru.gruzdev.common.base.BaseActivity
 import ru.gruzdev.common.network.repository.AnimeFilmsRepository
 import androidx.lifecycle.ViewModel
-
+import ru.gruzdev.animefilms.animeFilms.paging.AnimeFilmsDataSource
 
 
 @Module
@@ -21,5 +21,12 @@ class AnimeFilmsModules {
                 return modelClass.getConstructor(AnimeFilmsRepository::class.java).newInstance(repository)
             }
         }).get(AnimeFilmViewModel::class.java)
+    }
+
+
+    @Provides
+    @AnimeFilmsScope
+    fun provideDataSource(repository: AnimeFilmsRepository): AnimeFilmsDataSource {
+        return AnimeFilmsDataSource(repository)
     }
 }
