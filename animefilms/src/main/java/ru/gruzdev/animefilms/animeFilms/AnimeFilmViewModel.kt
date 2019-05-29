@@ -14,7 +14,7 @@ import ru.gruzdev.common.network.data.AnimeFilm
 import ru.gruzdev.common.network.repository.AnimeFilmsRepository
 
 class AnimeFilmViewModel(val repository: AnimeFilmsRepository) : BaseViewModel() {
-    private lateinit var data: LiveData<PagedList<AnimeFilm>>
+    private var data: LiveData<PagedList<AnimeFilm>>
 
     init {
         val config = PagedList.Config.Builder()
@@ -27,21 +27,21 @@ class AnimeFilmViewModel(val repository: AnimeFilmsRepository) : BaseViewModel()
             ), config).build()
     }
 
-    private val dataMuteble: MutableLiveData<List<AnimeFilm>> = MutableLiveData()
+//    private val dataMuteble: MutableLiveData<List<AnimeFilm>> = MutableLiveData()
 
 
-    fun observeDate(owner: LifecycleOwner, observer: Observer<List<AnimeFilm>>) {
+    fun observeDate(owner: LifecycleOwner, observer: Observer<PagedList<AnimeFilm>>) {
         data.observe(owner, observer)
     }
 
-    fun fetchData() {
-        addDisposable(
-            repository.getAnimeFilms()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { films ->
-                    dataMuteble.postValue(films)
-                })
-    }
+//    fun fetchData() {
+//        addDisposable(
+//            repository.getAnimeFilms()
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe { films ->
+//                    dataMuteble.postValue(films)
+//                })
+//    }
 
 }

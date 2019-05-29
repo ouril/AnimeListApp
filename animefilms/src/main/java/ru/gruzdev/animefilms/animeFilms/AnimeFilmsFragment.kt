@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_anime_films.*
 import ru.gruzdev.animefilms.R
+import ru.gruzdev.animefilms.animeFilms.paging.AnimeFilmsPaggingAdapter
 
 
 import javax.inject.Inject
@@ -36,17 +37,21 @@ class AnimeFilmsFragment : androidx.fragment.app.Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val adapterAnime = AnimeFilmsPaggingAdapter()
+        val viewManager = LinearLayoutManager(this.activity)
+        anime_film_list.apply {
+            setHasFixedSize(true)
+            adapter = adapterAnime
+            layoutManager = viewManager
+        }
         viewModel.observeDate(this, Observer {
-            val viewManager = LinearLayoutManager(this.activity)
-            val adapterAnime = AnimeFilmsAdapter(it)
+            adapterAnime.submitList(it)
 
-            anime_film_list.apply {
-                setHasFixedSize(true)
-                adapter = adapterAnime
-                layoutManager = viewManager
-            }
+
         })
-        viewModel.fetchData()
+
+//        viewModel.fetchData()
+
     }
 
     fun inject() {
